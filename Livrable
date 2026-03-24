@@ -1,0 +1,54 @@
+TP — Création d'une API REST : Gestion d'inscriptions à une course
+
+Vous trouverez le code source dans le dossier java.
+pour lancer le projet :
+
+1 — Démarrer la base de données
+Pour lancer votre base de données SQL et Adminer :
+
+docker compose up -d
+(vous devez avoir lancé Docker Desktop au préalable si vous êtes sur Windows)
+
+2 — Accéder à Adminer
+Adminer permet de visualiser la base de données.
+
+URL :
+http://localhost:8081
+
+Paramètres de connexion :
+
+Champ	    Valeur
+System	    PostgreSQL
+Server	    race_postgres
+Username	race
+Password	race
+Database	race_db
+
+3 — Lancer l'application
+Lancer votre configuration directement sur IntelliJ.
+
+Sinon, depuis votre IDE ou en ligne de commande :
+mvn spring-boot:run
+
+L'API sera disponible sur :
+http://localhost:8080
+
+Les endpoints implémentés couvrent l’ensemble des opérations liées à la gestion des coureurs. Cela inclut :
+
+la création d’un coureur,
+le listage des coureurs (global et par identifiant),
+la modification des informations d’un coureur,
+ainsi que la suppression d’un coureur de la base de données.
+Gestion des courses
+
+Dans un second temps, la gestion des courses a également été implémentée. Elle comprend :
+
+la création des courses,
+le listage des courses,
+ainsi que le suivi du nombre de participants pour chaque course.
+Gestion des inscriptions
+
+Enfin, le système prend en charge la gestion des inscriptions des coureurs aux courses, incluant :
+
+l’inscription d’un coureur à une ou plusieurs courses,
+ainsi que le listage des inscriptions.

@@ -12,6 +12,8 @@ public class Runner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotBlank
+    @Email
     private Long id;
 
     private String firstName;
@@ -25,6 +27,10 @@ public class Runner {
         Runner runner = (Runner) o;
         return Objects.equals(id, runner.id);
     }
+
+
+
+
 
     @Override
     public int hashCode() {

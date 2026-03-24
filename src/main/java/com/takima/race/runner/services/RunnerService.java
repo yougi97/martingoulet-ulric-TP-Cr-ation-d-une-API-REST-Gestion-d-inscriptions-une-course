@@ -29,4 +29,44 @@ public class RunnerService {
                 )
         );
     }
+    public Runner create(Runner runner){
+        return runnerRepository.save(runner);
+    }
+
+    public void delete(Long id) {
+        Runner runner = runnerRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Runner not found with id " + id
+                ));
+        runnerRepository.delete(runner);
+    }
+
+
+    public Runner update(Long id, Runner newRunner) {
+
+        Runner runner = runnerRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Runner not found"
+                ));
+
+        runner.setFirstName(newRunner.getFirstName());
+        runner.setLastName(newRunner.getLastName());
+        runner.setEmail(newRunner.getEmail());
+        runner.setAge(newRunner.getAge());
+
+        return runnerRepository.save(runner);
+    }
+
+    public Runner createRunner(Runner runner) {
+
+        if (runner.getEmail() == null || !runner.getEmail().contains("@")) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Email invalide"
+            );
+        }
+
+        return runnerRepository.save(runner);
+    }
 }
